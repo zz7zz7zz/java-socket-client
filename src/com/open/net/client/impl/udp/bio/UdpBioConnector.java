@@ -2,6 +2,7 @@ package com.open.net.client.impl.udp.bio;
 
 import com.open.net.client.impl.udp.bio.processor.UdpBioReadWriteProcessor;
 import com.open.net.client.structures.IConnectListener;
+import com.open.net.client.structures.TcpAddress;
 import com.open.net.client.structures.UdpAddress;
 
 import java.net.DatagramPacket;
@@ -90,6 +91,10 @@ public class UdpBioConnector {
         this.mAddress = tcpArray;
     }
 
+    public UdpAddress[] getConnectAddress(){
+    	return this.mAddress;
+    }
+    
     public synchronized void connect() {
         startConnect();
     }

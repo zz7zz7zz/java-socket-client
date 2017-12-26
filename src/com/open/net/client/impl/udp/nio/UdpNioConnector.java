@@ -89,6 +89,10 @@ public final class UdpNioConnector {
         this.mAddress = tcpArray;
     }
 
+    public UdpAddress[] getConnectAddress(){
+    	return this.mAddress;
+    }
+    
     public synchronized void connect() {
         startConnect();
     }

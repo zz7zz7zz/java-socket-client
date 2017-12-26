@@ -14,4 +14,10 @@ public class UdpAddress {
         this.ip = ip;
         this.port = port;
     }
+
+	@Override
+	public String toString() {
+		return "UdpAddress [ip=" + ip + ", port=" + port + "]";
+	}
+    
 }

@@ -36,6 +36,10 @@ public class BioClient extends BaseClient{
 		mConnector.setConnectAddress(tcpArray);
 	}
 
+    public TcpAddress[] getConnectAddress(){
+    	return mConnector.getConnectAddress();
+    }
+    
 	public void setConnectTimeout(long connect_timeout ){
 		mConnector.setConnectTimeout(connect_timeout);
 	}

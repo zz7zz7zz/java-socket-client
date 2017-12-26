@@ -90,6 +90,10 @@ public final class NioConnector {
         this.mAddress = tcpArray;
     }
 
+    public TcpAddress[] getConnectAddress(){
+    	return this.mAddress;
+    }
+    
     public void setConnectTimeout(long connect_timeout ){
         this.connect_timeout = connect_timeout;
     }

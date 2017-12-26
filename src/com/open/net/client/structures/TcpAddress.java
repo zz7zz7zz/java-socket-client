@@ -14,4 +14,10 @@ public class TcpAddress {
         this.ip = ip;
         this.port = port;
     }
+
+	@Override
+	public String toString() {
+		return "TcpAddress [ip=" + ip + ", port=" + port + "]";
+	}
+
 }

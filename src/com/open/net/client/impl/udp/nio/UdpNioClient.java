@@ -35,6 +35,10 @@ public final class UdpNioClient extends BaseClient {
         mConnector.setConnectAddress(tcpArray);
     }
 
+    public UdpAddress[] getConnectAddress(){
+    	return mConnector.getConnectAddress();
+    }
+    
     public void connect(){
         mConnector.connect();
     }

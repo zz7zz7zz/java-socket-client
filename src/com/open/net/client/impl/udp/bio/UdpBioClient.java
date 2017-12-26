@@ -4,6 +4,7 @@ import com.open.net.client.GClient;
 import com.open.net.client.structures.BaseClient;
 import com.open.net.client.structures.BaseMessageProcessor;
 import com.open.net.client.structures.IConnectListener;
+import com.open.net.client.structures.TcpAddress;
 import com.open.net.client.structures.UdpAddress;
 import com.open.net.client.structures.message.Message;
 
@@ -34,6 +35,10 @@ public class UdpBioClient extends BaseClient{
         mConnector.setConnectAddress(tcpArray);
     }
 
+    public UdpAddress[] getConnectAddress(){
+    	return mConnector.getConnectAddress();
+    }
+    
     public void connect(){
         mConnector.connect();
     }
