@@ -43,7 +43,7 @@ public class UdpBioConnector {
             mClient.init(mSocket,mWriteDatagramPacket,mReadDatagramPacket);
             
             if(null !=mIConnectListener ){
-                mIConnectListener.onConnectionSuccess();
+                mIConnectListener.onConnectionSuccess(mClient);
             }
         }
 
@@ -61,7 +61,7 @@ public class UdpBioConnector {
             connect();//try to connect next ip port
             
 //            if(null !=mIConnectListener ){
-//                mIConnectListener.onConnectionFailed();
+//                mIConnectListener.onConnectionFailed(mClient);
 //            }
         }
     };
@@ -139,7 +139,7 @@ public class UdpBioConnector {
             mConnectIndex = -1;
 
             if(null !=mIConnectListener ){
-                mIConnectListener.onConnectionFailed();
+                mIConnectListener.onConnectionFailed(mClient);
             }
         }
     }

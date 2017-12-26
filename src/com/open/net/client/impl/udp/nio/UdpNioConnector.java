@@ -42,7 +42,7 @@ public final class UdpNioConnector {
             mClient.init(socketChannel);
             
             if(null != mIConnectListener ){
-                mIConnectListener.onConnectionSuccess();
+                mIConnectListener.onConnectionSuccess(mClient);
             }
         }
 
@@ -138,7 +138,7 @@ public final class UdpNioConnector {
             mConnectIndex = -1;
 
             if(null !=mIConnectListener ){
-                mIConnectListener.onConnectionFailed();
+                mIConnectListener.onConnectionFailed(mClient);
             }
         }
     }
