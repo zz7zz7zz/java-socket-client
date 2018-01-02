@@ -1,11 +1,9 @@
 package com.open.net.client.impl.udp.bio;
 
-import com.open.net.client.GClient;
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
 import com.open.net.client.object.BaseMessageProcessor;
 import com.open.net.client.object.IConnectListener;
-import com.open.net.client.object.TcpAddress;
 import com.open.net.client.object.UdpAddress;
 
 import java.net.DatagramPacket;
@@ -18,11 +16,6 @@ import java.net.DatagramSocket;
  */
 
 public class UdpBioClient extends BaseClient{
-
-    static {
-        GClient.init();
-    }
-
     //-------------------------------------------------------------------------------------------
     private UdpBioConnector mConnector;
 

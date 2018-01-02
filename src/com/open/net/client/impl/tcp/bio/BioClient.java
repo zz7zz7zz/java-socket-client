@@ -1,6 +1,5 @@
 package com.open.net.client.impl.tcp.bio;
 
-import com.open.net.client.GClient;
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
 import com.open.net.client.object.BaseMessageProcessor;
@@ -18,11 +17,7 @@ import java.net.SocketException;
  * description  :   BioClient
  */
 public class BioClient extends BaseClient{
-
-	static {
-		GClient.init();
-	}
-
+	
 	//-------------------------------------------------------------------------------------------
 	private BioConnector mConnector;
 

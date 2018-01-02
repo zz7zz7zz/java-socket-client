@@ -2,7 +2,6 @@ package com.open.net.client.impl.udp.bio;
 
 import com.open.net.client.impl.udp.bio.processor.UdpBioReadWriteProcessor;
 import com.open.net.client.object.IConnectListener;
-import com.open.net.client.object.TcpAddress;
 import com.open.net.client.object.UdpAddress;
 
 import java.net.DatagramPacket;

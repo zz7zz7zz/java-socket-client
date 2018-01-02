@@ -1,6 +1,5 @@
 package com.open.net.client.impl.udp.nio;
 
-import com.open.net.client.GClient;
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
 import com.open.net.client.object.BaseMessageProcessor;
@@ -18,10 +17,6 @@ import java.nio.channels.DatagramChannel;
  */
 
 public final class UdpNioClient extends BaseClient {
-
-    static {
-        GClient.init();
-    }
 
     private UdpNioConnector mConnector;
 

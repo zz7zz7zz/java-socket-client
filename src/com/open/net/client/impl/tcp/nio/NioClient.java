@@ -1,6 +1,5 @@
 package com.open.net.client.impl.tcp.nio;
 
-import com.open.net.client.GClient;
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
 import com.open.net.client.object.BaseMessageProcessor;
@@ -18,11 +17,6 @@ import java.nio.channels.SocketChannel;
  */
 
 public final class NioClient extends BaseClient {
-
-    static {
-        GClient.init();
-    }
-
     //-------------------------------------------------------------------------------------------
     private NioConnector mConnector;
 
