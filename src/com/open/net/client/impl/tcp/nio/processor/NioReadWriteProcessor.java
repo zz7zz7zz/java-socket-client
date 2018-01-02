@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.nio.processor;
 
 import com.open.net.client.impl.tcp.nio.NioConnectListener;
-import com.open.net.client.structures.BaseClient;
+import com.open.net.client.object.BaseClient;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

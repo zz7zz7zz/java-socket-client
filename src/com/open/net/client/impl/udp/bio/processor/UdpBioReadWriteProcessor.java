@@ -1,8 +1,8 @@
 package com.open.net.client.impl.udp.bio.processor;
 
 import com.open.net.client.impl.udp.bio.UdpBioConnectListener;
+import com.open.net.client.object.BaseClient;
 import com.open.net.client.impl.udp.bio.UdpBioClient;
-import com.open.net.client.structures.BaseClient;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.bio.processor;
 
-import com.open.net.client.structures.BaseClient;
 import com.open.net.client.impl.tcp.bio.BioConnectListener;
+import com.open.net.client.object.BaseClient;
 
 import java.io.InputStream;
 import java.io.OutputStream;

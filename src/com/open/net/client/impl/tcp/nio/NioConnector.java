@@ -1,8 +1,8 @@
 package com.open.net.client.impl.tcp.nio;
 
 import com.open.net.client.impl.tcp.nio.processor.NioReadWriteProcessor;
-import com.open.net.client.structures.IConnectListener;
-import com.open.net.client.structures.TcpAddress;
+import com.open.net.client.object.IConnectListener;
+import com.open.net.client.object.TcpAddress;
 
 import java.io.IOException;
 import java.nio.channels.SocketChannel;

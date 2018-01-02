@@ -1,11 +1,11 @@
 package com.open.net.client.impl.udp.nio;
 
 import com.open.net.client.GClient;
-import com.open.net.client.structures.BaseClient;
-import com.open.net.client.structures.BaseMessageProcessor;
-import com.open.net.client.structures.IConnectListener;
-import com.open.net.client.structures.UdpAddress;
-import com.open.net.client.structures.message.Message;
+import com.open.net.client.message.Message;
+import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.IConnectListener;
+import com.open.net.client.object.UdpAddress;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

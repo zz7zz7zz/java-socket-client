@@ -1,8 +1,8 @@
 package com.open.net.client.impl.udp.nio;
 
 import com.open.net.client.impl.udp.nio.processor.UdpNioReadWriteProcessor;
-import com.open.net.client.structures.IConnectListener;
-import com.open.net.client.structures.UdpAddress;
+import com.open.net.client.object.IConnectListener;
+import com.open.net.client.object.UdpAddress;
 
 import java.io.IOException;
 import java.nio.channels.DatagramChannel;

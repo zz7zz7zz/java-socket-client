@@ -1,8 +1,8 @@
 package com.open.net.client.impl.udp.nio.processor;
 
 import com.open.net.client.impl.udp.nio.UdpNioConnectListener;
+import com.open.net.client.object.BaseClient;
 import com.open.net.client.impl.udp.nio.UdpNioClient;
-import com.open.net.client.structures.BaseClient;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

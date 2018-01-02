@@ -1,8 +1,8 @@
 package com.open.net.client.impl.tcp.bio;
 
 import com.open.net.client.impl.tcp.bio.processor.BioReadWriteProcessor;
-import com.open.net.client.structures.IConnectListener;
-import com.open.net.client.structures.TcpAddress;
+import com.open.net.client.object.IConnectListener;
+import com.open.net.client.object.TcpAddress;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,11 +1,11 @@
 package com.open.net.client.impl.tcp.bio;
 
 import com.open.net.client.GClient;
-import com.open.net.client.structures.BaseClient;
-import com.open.net.client.structures.BaseMessageProcessor;
-import com.open.net.client.structures.IConnectListener;
-import com.open.net.client.structures.TcpAddress;
-import com.open.net.client.structures.message.Message;
+import com.open.net.client.message.Message;
+import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.IConnectListener;
+import com.open.net.client.object.TcpAddress;
 
 import java.io.IOException;
 import java.io.InputStream;

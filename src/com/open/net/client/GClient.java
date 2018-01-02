@@ -1,7 +1,7 @@
 package com.open.net.client;
 
-import com.open.net.client.structures.message.MessageBuffer;
-import com.open.net.client.structures.pools.MessagePool;
+import com.open.net.client.message.MessageBuffer;
+import com.open.net.client.pools.MessagePool;
 
 /**
  * author       :   long
