@@ -2,7 +2,7 @@ package com.open.net.client.impl.udp.bio;
 
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
-import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.UdpAddress;
 
@@ -19,7 +19,7 @@ public class UdpBioClient extends BaseClient{
     //-------------------------------------------------------------------------------------------
     private UdpBioConnector mConnector;
 
-    public UdpBioClient(BaseMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
+    public UdpBioClient(AbstractClientMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
         super(mMessageProcessor);
         mConnector = new UdpBioConnector(this,mConnectListener);
     }

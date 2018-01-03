@@ -2,7 +2,7 @@ package com.open.net.client.impl.udp.nio;
 
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
-import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.UdpAddress;
 
@@ -20,7 +20,7 @@ public final class UdpNioClient extends BaseClient {
 
     private UdpNioConnector mConnector;
 
-    public UdpNioClient(BaseMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
+    public UdpNioClient(AbstractClientMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
         super(mMessageProcessor);
         mConnector = new UdpNioConnector(this,mConnectListener);
     }

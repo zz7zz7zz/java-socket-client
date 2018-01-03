@@ -2,7 +2,7 @@ package com.open.net.client.impl.tcp.bio;
 
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
-import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.TcpAddress;
 
@@ -21,7 +21,7 @@ public class BioClient extends BaseClient{
 	//-------------------------------------------------------------------------------------------
 	private BioConnector mConnector;
 
-	public BioClient(BaseMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
+	public BioClient(AbstractClientMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
 		super(mMessageProcessor);
 		mConnector = new BioConnector(this,mConnectListener);
 	}

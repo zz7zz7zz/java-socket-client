@@ -10,7 +10,7 @@ import com.open.net.client.message.Message;
  * description  :   数据回调
  */
 
-public abstract class BaseMessageProcessor {
+public abstract class AbstractClientMessageProcessor {
 
     //----------------------------------发数据------------------------------------------------
     public final void send(BaseClient mClient,byte[] src){

@@ -2,7 +2,7 @@ package com.open.net.client.impl.tcp.nio;
 
 import com.open.net.client.message.Message;
 import com.open.net.client.object.BaseClient;
-import com.open.net.client.object.BaseMessageProcessor;
+import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.TcpAddress;
 
@@ -20,7 +20,7 @@ public final class NioClient extends BaseClient {
     //-------------------------------------------------------------------------------------------
     private NioConnector mConnector;
 
-    public NioClient(BaseMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
+    public NioClient(AbstractClientMessageProcessor mMessageProcessor, IConnectListener mConnectListener) {
         super(mMessageProcessor);
         mConnector = new NioConnector(this,mConnectListener);
     }

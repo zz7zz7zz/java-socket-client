@@ -19,9 +19,9 @@ public abstract class BaseClient {
     //收队列
     public MessageWriteQueen mWriteMessageQueen  = new MessageWriteQueen();
 
-    protected BaseMessageProcessor mMessageProcessor;
+    protected AbstractClientMessageProcessor mMessageProcessor;
 
-    public BaseClient(BaseMessageProcessor mMessageProcessor) {
+    public BaseClient(AbstractClientMessageProcessor mMessageProcessor) {
         this.mMessageProcessor = mMessageProcessor;
     }
 
