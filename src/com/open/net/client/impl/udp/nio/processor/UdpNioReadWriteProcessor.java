@@ -1,7 +1,7 @@
 package com.open.net.client.impl.udp.nio.processor;
 
 import com.open.net.client.impl.udp.nio.UdpNioConnectListener;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.impl.udp.nio.UdpNioClient;
 
 import java.io.IOException;
@@ -24,10 +24,10 @@ public final class UdpNioReadWriteProcessor {
     private static int G_SOCKET_ID = 0;
 
     private int mSocketId;
-    private String  mIp ="192.168.1.1";
+    private String  mHost ="192.168.1.1";
     private int     mPort =9999;
 
-    private BaseClient mClient;
+    private AbstractClient mClient;
     private UdpNioConnectListener mNioConnectListener;
 
     private DatagramChannel mSocketChannel;
@@ -38,11 +38,11 @@ public final class UdpNioReadWriteProcessor {
 
     private boolean closed = false;
 
-    public UdpNioReadWriteProcessor(String mIp, int mPort , BaseClient mClient, UdpNioConnectListener mNioConnectListener) {
+    public UdpNioReadWriteProcessor(String mIp, int mPort , AbstractClient mClient, UdpNioConnectListener mNioConnectListener) {
         G_SOCKET_ID++;
 
         this.mSocketId = G_SOCKET_ID;
-        this.mIp = mIp;
+        this.mHost = mIp;
         this.mPort = mPort;
         this.mClient = mClient;
         this.mNioConnectListener = mNioConnectListener;
@@ -84,7 +84,7 @@ public final class UdpNioReadWriteProcessor {
 
     public void onSocketExit(int exit_code){
         close();
-        System.out.println(TAG + " onSocketExit mSocketId " + mSocketId + " exit_code " + exit_code);
+        System.out.println(TAG + String.format("client close id %d host %s port %d when %s ", mSocketId,mHost,mPort,(exit_code == 1 ? "write" : "read ")));
         if(null != mNioConnectListener){
             mNioConnectListener.onConnectFailed(UdpNioReadWriteProcessor.this);
         }
@@ -106,7 +106,7 @@ public final class UdpNioReadWriteProcessor {
                 mSocketChannel = DatagramChannel.open();
                 mSocketChannel.configureBlocking(false);
 
-                InetSocketAddress address=new InetSocketAddress(mIp, mPort);
+                InetSocketAddress address=new InetSocketAddress(mHost, mPort);
 //                mSocketChannel.socket().bind(address);
                 mSocketChannel.connect(address);//可以将DatagramChannel“连接”到网络中的特定地址的。由于UDP是无连接的，连接到特定地址并不会像TCP通道那样创建一个真正的连接。而是锁住DatagramChannel ，让其只能从特定地址收发数据。
                 mSocketChannel.register(mSelector, SelectionKey.OP_READ,mClient);
@@ -132,7 +132,7 @@ public final class UdpNioReadWriteProcessor {
                             }
 
                             if (key.isReadable()) {
-                                BaseClient mClient = (BaseClient) key.attachment();
+                                AbstractClient mClient = (AbstractClient) key.attachment();
                                 boolean ret = mClient.onRead();
                                 if(!ret){
                                     isExit = true;
@@ -143,7 +143,7 @@ public final class UdpNioReadWriteProcessor {
                                 }
 
                             }else if (key.isWritable()) {
-                                BaseClient mClient = (BaseClient) key.attachment();
+                                AbstractClient mClient = (AbstractClient) key.attachment();
                                 boolean ret = mClient.onWrite();
                                 if(!ret){
                                     isExit = true;

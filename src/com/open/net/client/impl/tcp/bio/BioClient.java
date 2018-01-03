@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.bio;
 
 import com.open.net.client.message.Message;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.TcpAddress;
@@ -16,7 +16,7 @@ import java.net.SocketException;
  * created on   :   2017/11/30
  * description  :   BioClient
  */
-public class BioClient extends BaseClient{
+public class BioClient extends AbstractClient{
 	
 	//-------------------------------------------------------------------------------------------
 	private BioConnector mConnector;

@@ -1,7 +1,7 @@
 package com.open.net.client.impl.udp.bio.processor;
 
 import com.open.net.client.impl.udp.bio.UdpBioConnectListener;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.impl.udp.bio.UdpBioClient;
 
 import java.net.DatagramPacket;
@@ -23,10 +23,10 @@ public class UdpBioReadWriteProcessor {
     private static int G_SOCKET_ID = 0;
 
     private int     mSocketId;
-    private String mIp    = "192.168.1.1";
+    private String mHost    = "192.168.1.1";
     private int    mPort  = 9999;
 
-    private BaseClient mClient;
+    private AbstractClient mClient;
     private UdpBioConnectListener mConnectStatusListener;
 
     private DatagramSocket mSocket;
@@ -41,11 +41,11 @@ public class UdpBioReadWriteProcessor {
 
     private int r_w_count = 2;//读写线程是否都退出了
 
-    public UdpBioReadWriteProcessor(String mIp, int mPort, BaseClient mClient, UdpBioConnectListener mConnectionStatusListener) {
+    public UdpBioReadWriteProcessor(String mIp, int mPort, AbstractClient mClient, UdpBioConnectListener mConnectionStatusListener) {
         G_SOCKET_ID++;
 
         this.mSocketId = G_SOCKET_ID;
-        this.mIp = mIp;
+        this.mHost = mIp;
         this.mPort = mPort;
         this.mClient = mClient;
         this.mConnectStatusListener = mConnectionStatusListener;
@@ -106,7 +106,7 @@ public class UdpBioReadWriteProcessor {
 
         --r_w_count;
         boolean isWriterReaderExit = (r_w_count <= 0);
-        System.out.println(TAG + " onSocketExit mSocketId " + mSocketId + " exit_code " + exit_code + (exit_code == 1 ? " onWrite" : " onRead")+ " isWriterReaderExit " + isWriterReaderExit);
+        System.out.println(TAG + String.format("client close id %d host %s port %d when %s isWriterReaderExit %b", mSocketId,mHost,mPort,(exit_code == 1 ? "write" : "read "),isWriterReaderExit));
         close();
         if(isWriterReaderExit){
             if(null != mConnectStatusListener){
@@ -125,7 +125,7 @@ public class UdpBioReadWriteProcessor {
             boolean connectRet;
             try {
                 mSocket = new DatagramSocket();  //创建套接字
-                InetAddress address = InetAddress.getByName(mIp);//服务器地址
+                InetAddress address = InetAddress.getByName(mHost);//服务器地址
                 DatagramPacket mWriteDatagramPacket = new DatagramPacket(mWriteBuff, mWriteBuff.length, address, mPort);//创建发送方的数据报信息
                 DatagramPacket mReadDatagramPacket  = new DatagramPacket(mReadBuff, mReadBuff.length);//创建发送方的数据报信息
 

@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.nio;
 
 import com.open.net.client.message.Message;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.TcpAddress;
@@ -16,7 +16,7 @@ import java.nio.channels.SocketChannel;
  * description  :   NioClient
  */
 
-public final class NioClient extends BaseClient {
+public final class NioClient extends AbstractClient {
     //-------------------------------------------------------------------------------------------
     private NioConnector mConnector;
 

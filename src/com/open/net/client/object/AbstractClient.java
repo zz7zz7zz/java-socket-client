@@ -11,7 +11,7 @@ import com.open.net.client.message.MessageWriteQueen;
  * description  :   客户连接对象
  */
 
-public abstract class BaseClient {
+public abstract class AbstractClient {
 
     //读队列
     public MessageReadQueen mReadMessageQueen   = new MessageReadQueen();
@@ -21,7 +21,7 @@ public abstract class BaseClient {
 
     protected AbstractClientMessageProcessor mMessageProcessor;
 
-    public BaseClient(AbstractClientMessageProcessor mMessageProcessor) {
+    public AbstractClient(AbstractClientMessageProcessor mMessageProcessor) {
         this.mMessageProcessor = mMessageProcessor;
     }
 

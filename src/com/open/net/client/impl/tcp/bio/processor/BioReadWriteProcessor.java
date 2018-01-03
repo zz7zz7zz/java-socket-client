@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.bio.processor;
 
 import com.open.net.client.impl.tcp.bio.BioConnectListener;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,11 +21,11 @@ public class BioReadWriteProcessor {
     private static int G_SOCKET_ID = 0;
 
     private int     mSocketId;
-    private String  mIp             = "192.168.1.1";
+    private String  mHost             = "192.168.1.1";
     private int     mPort           = 9999;
     private long    connect_timeout = 10000;
 
-    private BaseClient mClient;
+    private AbstractClient mClient;
     private BioConnectListener mConnectStatusListener;
 
     //------------------------------------------------------------------------------------------
@@ -43,11 +43,11 @@ public class BioReadWriteProcessor {
 
     private int r_w_count = 2;//读写线程是否都退出了
 
-    public BioReadWriteProcessor(String mIp, int mPort, long   connect_timeout, BaseClient mClient, BioConnectListener mConnectionStatusListener) {
+    public BioReadWriteProcessor(String mIp, int mPort, long   connect_timeout, AbstractClient mClient, BioConnectListener mConnectionStatusListener) {
         G_SOCKET_ID++;
 
         this.mSocketId = G_SOCKET_ID;
-        this.mIp = mIp;
+        this.mHost = mIp;
         this.mPort = mPort;
         this.connect_timeout = connect_timeout;
         this.mClient = mClient;
@@ -126,7 +126,7 @@ public class BioReadWriteProcessor {
 
         --r_w_count;
         boolean isWriterReaderExit = (r_w_count <= 0);
-        System.out.println(TAG + " onSocketExit mSocketId " + mSocketId + " exit_code " + exit_code + (exit_code == 1 ? " onWrite" : " onRead")+ " isWriterReaderExit " + isWriterReaderExit);
+        System.out.println(TAG + String.format("client close id %d host %s port %d when %s isWriterReaderExit %b", mSocketId,mHost,mPort,(exit_code == 1 ? "write" : "read "),isWriterReaderExit));
         close();
         if(isWriterReaderExit){
             if(null != mConnectStatusListener){
@@ -144,7 +144,7 @@ public class BioReadWriteProcessor {
             try {
 
                 mSocket  =new Socket();
-                mSocket.connect(new InetSocketAddress(mIp, mPort), (int) connect_timeout);
+                mSocket.connect(new InetSocketAddress(mHost, mPort), (int) connect_timeout);
 
                 mOutputStream 	= mSocket.getOutputStream();
                 mInputStream 	= mSocket.getInputStream();

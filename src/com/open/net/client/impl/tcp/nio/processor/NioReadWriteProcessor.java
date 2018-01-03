@@ -1,7 +1,7 @@
 package com.open.net.client.impl.tcp.nio.processor;
 
 import com.open.net.client.impl.tcp.nio.NioConnectListener;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -24,11 +24,11 @@ public final class NioReadWriteProcessor {
     private static int G_SOCKET_ID = 0;
 
     private int     mSocketId;
-    private String  mIp             = "192.168.1.1";
+    private String  mHost             = "192.168.1.1";
     private int     mPort           = 9999;
     private long    connect_timeout = 10000;
 
-    private BaseClient mClient;
+    private AbstractClient mClient;
     private NioConnectListener mNioConnectListener;
 
     //------------------------------------------------------------------------------------------
@@ -40,11 +40,11 @@ public final class NioReadWriteProcessor {
 
     private boolean closed = false;
 
-    public NioReadWriteProcessor(String mIp, int mPort, long   connect_timeout , BaseClient mClient, NioConnectListener mNioConnectListener) {
+    public NioReadWriteProcessor(String mIp, int mPort, long   connect_timeout , AbstractClient mClient, NioConnectListener mNioConnectListener) {
         G_SOCKET_ID++;
 
         this.mSocketId = G_SOCKET_ID;
-        this.mIp = mIp;
+        this.mHost = mIp;
         this.mPort = mPort;
         this.connect_timeout = connect_timeout;
         this.mClient = mClient;
@@ -93,7 +93,7 @@ public final class NioReadWriteProcessor {
     }
 
     public void onSocketExit(int exit_code){
-        System.out.println(TAG + " onSocketExit mSocketId " + mSocketId + " exit_code " + exit_code);
+        System.out.println(TAG + String.format("client close id %d host %s port %d when %s ", mSocketId,mHost,mPort,(exit_code == 1 ? "write" : "read ")));
 
         close();
         if(null != mNioConnectListener){
@@ -117,7 +117,7 @@ public final class NioReadWriteProcessor {
                 mSocketChannel = SocketChannel.open();
                 mSocketChannel.configureBlocking(false);
 
-                InetSocketAddress address=new InetSocketAddress(mIp, mPort);
+                InetSocketAddress address=new InetSocketAddress(mHost, mPort);
                 mSocketChannel.connect(address);
                 mSocketChannel.register(mSelector, SelectionKey.OP_CONNECT,mClient);
 
@@ -141,7 +141,7 @@ public final class NioReadWriteProcessor {
                                 }
 
                                 if (key.isReadable()) {
-                                    BaseClient mClient = (BaseClient) key.attachment();
+                                    AbstractClient mClient = (AbstractClient) key.attachment();
                                     boolean ret = mClient.onRead();
                                     if(!ret){
                                         isExit = true;
@@ -152,7 +152,7 @@ public final class NioReadWriteProcessor {
                                     }
 
                                 }else if (key.isWritable()) {
-                                    BaseClient mClient = (BaseClient) key.attachment();
+                                    AbstractClient mClient = (AbstractClient) key.attachment();
                                     boolean ret = mClient.onWrite();
                                     if(!ret){
                                         isExit = true;

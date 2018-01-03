@@ -1,7 +1,7 @@
 package com.open.net.client.impl.udp.bio;
 
 import com.open.net.client.message.Message;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.UdpAddress;
@@ -15,7 +15,7 @@ import java.net.DatagramSocket;
  * description  :   UDP 客户端
  */
 
-public class UdpBioClient extends BaseClient{
+public class UdpBioClient extends AbstractClient{
     //-------------------------------------------------------------------------------------------
     private UdpBioConnector mConnector;
 

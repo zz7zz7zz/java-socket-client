@@ -1,7 +1,7 @@
 package com.open.net.client.impl.udp.nio;
 
 import com.open.net.client.message.Message;
-import com.open.net.client.object.BaseClient;
+import com.open.net.client.object.AbstractClient;
 import com.open.net.client.object.AbstractClientMessageProcessor;
 import com.open.net.client.object.IConnectListener;
 import com.open.net.client.object.UdpAddress;
@@ -16,7 +16,7 @@ import java.nio.channels.DatagramChannel;
  * description  :   UdpNioClient
  */
 
-public final class UdpNioClient extends BaseClient {
+public final class UdpNioClient extends AbstractClient {
 
     private UdpNioConnector mConnector;
 

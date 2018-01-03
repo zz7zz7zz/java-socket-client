@@ -8,7 +8,7 @@ package com.open.net.client.object;
 
 public interface IConnectListener {
 
-    void onConnectionSuccess(BaseClient mClient);
+    void onConnectionSuccess(AbstractClient mClient);
 
-    void onConnectionFailed(BaseClient mClient);
+    void onConnectionFailed(AbstractClient mClient);
 }
