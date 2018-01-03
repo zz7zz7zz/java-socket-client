@@ -24,7 +24,7 @@ public final class MessageBuffer {
 
     //块数量
     private static int size_small       = 5;
-    private static int size_middle      = 2;
+    private static int size_middle      = 1;
     private static int size_large       = 0;
 
     //buffer依赖的实际数组
@@ -39,7 +39,7 @@ public final class MessageBuffer {
 
     //----------------------------------------------------------------------------------------
     //临时可缓存对象
-    private static int max_size_temporary_cache = 2;
+    private static int max_size_temporary_cache = 1;
     private LinkedList<byte[]> mTemporaryCacheList = new LinkedList<>();
 
     //----------------------------------------------------------------------------------------
