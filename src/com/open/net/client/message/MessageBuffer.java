@@ -63,7 +63,7 @@ public final class MessageBuffer {
         MessageBuffer.max_size_temporary_cache = max_temporary_cache_size;
     }
 
-    public MessageBuffer() {
+    private MessageBuffer() {
         buffer_small    = new byte[size_small   * capacity_small];
         buffer_middle   = new byte[size_middle  * capacity_middle];
         buffer_large    = new byte[size_large   * capacity_large];
@@ -80,6 +80,13 @@ public final class MessageBuffer {
         return msg;
     }
 
+    public Message buildWithCapacity(int capacity, byte[] src,int offset, int length){
+        Message msg = build(capacity);
+        System.arraycopy(src,offset,msg.data,msg.offset,length);
+        msg.length = length;
+        return msg;
+    }
+    
     private Message build(int length){
         Message ret = MessagePool.get();
 
@@ -157,6 +164,9 @@ public final class MessageBuffer {
     }
 
     public void release(Message msg){
+    	if(null == msg){
+    		return;
+    	}
         if(msg.dst_reuse_type == REUSE_SMALL){
             tracker_buffer_small.release(msg.block_index);
             MessagePool.put(msg);
@@ -242,5 +252,15 @@ public final class MessageBuffer {
                 used_count--;
             }
         }
+    }
+    
+    //------------------------------------------------------------------------------------
+    private static MessageBuffer INS;
+    
+    public static MessageBuffer getInstance(){
+    	if(null == INS){
+    		INS = new MessageBuffer();
+    	}
+    	return INS;
     }
 }
