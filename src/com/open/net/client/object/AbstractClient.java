@@ -19,6 +19,8 @@ public abstract class AbstractClient {
     //收队列
     public MessageWriteQueen mWriteMessageQueen  = new MessageWriteQueen();
 
+    public Message  mReceivingMsg;
+    
     protected AbstractClientMessageProcessor mMessageProcessor;
 
     public AbstractClient(AbstractClientMessageProcessor mMessageProcessor) {

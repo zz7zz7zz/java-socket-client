@@ -2,6 +2,7 @@ package com.open.net.client.impl.tcp.bio.processor;
 
 import com.open.net.client.impl.tcp.bio.BioConnectListener;
 import com.open.net.client.object.AbstractClient;
+import com.open.net.client.message.MessageBuffer;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -114,6 +115,9 @@ public class BioReadWriteProcessor {
         }finally{
             mReadThread =null;
         }
+        
+        MessageBuffer.getInstance().release(mClient.mReceivingMsg);
+        mClient.mReceivingMsg = null;
     }
 
     public void wakeUp(){

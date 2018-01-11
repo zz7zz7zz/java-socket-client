@@ -1,6 +1,7 @@
 package com.open.net.client.impl.tcp.nio.processor;
 
 import com.open.net.client.impl.tcp.nio.NioConnectListener;
+import com.open.net.client.message.MessageBuffer;
 import com.open.net.client.object.AbstractClient;
 
 import java.io.IOException;
@@ -84,6 +85,9 @@ public final class NioReadWriteProcessor {
         }
 
         wakeUp();
+        
+        MessageBuffer.getInstance().release(mClient.mReceivingMsg);
+        mClient.mReceivingMsg = null;
     }
 
     public void wakeUp(){
