@@ -39,6 +39,10 @@ public class ClientConfig {
 
     public int pool_max_size_temporary_cache;
   
+    //包大小配置
+    public int packet_max_length_tcp = 16384;
+    public int packet_max_length_udp = 65507;
+    
     //解析文件配置参数
     public final void initFileConfig(String config_path) {
         HashMap<String,Object> map = CfgParser.parseToMap(config_path);
@@ -57,6 +61,9 @@ public class ClientConfig {
             pool_size_large 		= CfgParser.getInt(map,"pool","pool_size_large");
 
             pool_max_size_temporary_cache = CfgParser.getInt(map,"pool","pool_max_size_temporary_cache");
+            
+            packet_max_length_tcp 	= CfgParser.getInt(map,"packet","packet_max_length_tcp");
+            packet_max_length_udp 	= CfgParser.getInt(map,"packet","packet_max_length_udp");
        }
     }
 
