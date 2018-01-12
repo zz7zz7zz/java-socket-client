@@ -17,7 +17,7 @@ public abstract class AbstractClientMessageProcessor {
         this.send(mClient,src,0,src.length);
     }
 
-    public final void send(AbstractClient mClient,byte[] src , int offset , int length){
+    public void send(AbstractClient mClient,byte[] src , int offset , int length){
         mClient.onSendMessage(src,offset,length);
     }
 
