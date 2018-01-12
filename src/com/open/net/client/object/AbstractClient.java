@@ -13,6 +13,10 @@ import com.open.net.client.message.MessageWriteQueen;
 
 public abstract class AbstractClient {
 
+	//最大包体长度
+	public static int PACKET_MAX_LENGTH_TCP = 8192;//TCP 最大包体长度
+	public static int PACKET_MAX_LENGTH_UDP = 65507;//UDP 最大包体长度
+	
     //读队列
     public MessageReadQueen mReadMessageQueen   = new MessageReadQueen();
 

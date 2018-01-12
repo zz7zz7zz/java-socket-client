@@ -48,8 +48,8 @@ public class UdpBioClient extends AbstractClient{
     private DatagramSocket mSocket;
     private DatagramPacket mWriteDatagramPacket ;
     private DatagramPacket mReadDatagramPacket ;
-    public byte[] mWriteBuff  = new byte[65500];
-    public byte[] mReadBuff   = new byte[65500];
+    public byte[] mWriteBuff  = new byte[AbstractClient.PACKET_MAX_LENGTH_UDP];
+    public byte[] mReadBuff   = new byte[AbstractClient.PACKET_MAX_LENGTH_UDP];
 
     public void init(DatagramSocket mSocket, DatagramPacket mWriteDatagramPacket, DatagramPacket mReadDatagramPacket){
         this.mSocket = mSocket;

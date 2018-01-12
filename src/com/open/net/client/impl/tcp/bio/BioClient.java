@@ -77,7 +77,7 @@ public class BioClient extends AbstractClient{
 	public boolean onRead(){
 		boolean readRet = false;
 		try {
-			int maximum_length = 64*1024;
+			int maximum_length = AbstractClient.PACKET_MAX_LENGTH_TCP;
 			byte[] bodyBytes = new byte[maximum_length];
 			int numRead;
 

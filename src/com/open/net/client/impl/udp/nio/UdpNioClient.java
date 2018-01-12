@@ -48,8 +48,8 @@ public final class UdpNioClient extends AbstractClient {
 
     //-------------------------------------------------------------------------------------------
     private DatagramChannel mSocketChannel;
-    private ByteBuffer mReadByteBuffer  = ByteBuffer.allocate(64*1024);
-    private ByteBuffer mWriteByteBuffer = ByteBuffer.allocate(64*1024);
+    private ByteBuffer mReadByteBuffer  = ByteBuffer.allocate(AbstractClient.PACKET_MAX_LENGTH_UDP);
+    private ByteBuffer mWriteByteBuffer = ByteBuffer.allocate(AbstractClient.PACKET_MAX_LENGTH_UDP);
 
     public void init(DatagramChannel socketChannel) {
         this.mSocketChannel = socketChannel;

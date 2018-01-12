@@ -56,8 +56,8 @@ public final class NioClient extends AbstractClient {
     
     //-------------------------------------------------------------------------------------------
     private SocketChannel mSocketChannel;
-    private ByteBuffer mReadByteBuffer  = ByteBuffer.allocate(64*1024);
-    private ByteBuffer mWriteByteBuffer = ByteBuffer.allocate(64*1024);
+    private ByteBuffer mReadByteBuffer  = ByteBuffer.allocate(AbstractClient.PACKET_MAX_LENGTH_TCP);
+    private ByteBuffer mWriteByteBuffer = ByteBuffer.allocate(AbstractClient.PACKET_MAX_LENGTH_TCP);
 
     public void init(SocketChannel socketChannel) {
         this.mSocketChannel = socketChannel;
