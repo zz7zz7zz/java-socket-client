@@ -67,15 +67,14 @@ public class ClientConfig {
        }
     }
 
+    //-------------------------------------------------------------------------------------------
 	@Override
 	public String toString() {
 		return "ClientConfig [pool_capacity_small=" + pool_capacity_small + ", pool_capacity_middle="
 				+ pool_capacity_middle + ", pool_capacity_large=" + pool_capacity_large + ", pool_size_small="
 				+ pool_size_small + ", pool_size_middle=" + pool_size_middle + ", pool_size_large=" + pool_size_large
-				+ ", pool_max_size_temporary_cache=" + pool_max_size_temporary_cache + "]";
+				+ ", pool_max_size_temporary_cache=" + pool_max_size_temporary_cache + ", packet_max_length_tcp="
+				+ packet_max_length_tcp + ", packet_max_length_udp=" + packet_max_length_udp + "]";
 	}
-
-    
-    //-------------------------------------------------------------------------------------------
-    
+  
 }
