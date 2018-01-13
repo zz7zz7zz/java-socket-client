@@ -59,6 +59,7 @@ public class BioReadWriteProcessor {
     public void start(){
         mConnectProcessor = new ConnectRunnable();
         mConnectThread = new Thread(mConnectProcessor);
+        mConnectThread.setName("client-bio-Connect-Thread");
         mConnectThread.start();
     }
 
@@ -159,6 +160,9 @@ public class BioReadWriteProcessor {
                 mWriteThread =new Thread(mWriteProcessor);
                 mReadThread =new Thread(mReadProcessor);
 
+                mWriteThread.setName("client-bio-write-Thread");
+                mReadThread.setName("client-bio-read-Thread");
+                
                 mWriteThread.start();
                 mReadThread.start();
 

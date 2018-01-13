@@ -51,6 +51,7 @@ public final class UdpNioReadWriteProcessor {
     public void start(){
         mConnectProcessor = new ConnectRunnable();
         mConnectThread = new Thread(mConnectProcessor);
+        mConnectThread.setName("client-udp-nio-connect-write-read-Thread");
         mConnectThread.start();
     }
 

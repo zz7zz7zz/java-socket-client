@@ -54,6 +54,7 @@ public class UdpBioReadWriteProcessor {
     public void start(){
         mConnectProcessor = new ConnectRunnable();
         mConnectThread = new Thread(mConnectProcessor);
+        mConnectThread.setName("client-udp-bio-Connect-Thread");
         mConnectThread.start();
     }
 
@@ -140,6 +141,9 @@ public class UdpBioReadWriteProcessor {
                 mWriteThread =new Thread(mWriteProcessor);
                 mReadThread =new Thread(mReadProcessor);
 
+                mWriteThread.setName("client-udp-bio-write-Thread");
+                mReadThread.setName("client-udp-bio-read-Thread");
+                
                 mWriteThread.start();
                 mReadThread.start();
 

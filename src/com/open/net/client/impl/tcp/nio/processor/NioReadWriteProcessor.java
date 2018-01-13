@@ -55,6 +55,7 @@ public final class NioReadWriteProcessor {
     public void start(){
         mConnectProcessor = new ConnectRunnable();
         mConnectThread = new Thread(mConnectProcessor);
+        mConnectThread.setName("client-nio-connect-write-read-Thread");
         mConnectThread.start();
     }
 
