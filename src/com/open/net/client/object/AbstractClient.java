@@ -31,7 +31,11 @@ public abstract class AbstractClient {
         this.mMessageProcessor = mMessageProcessor;
     }
 
-    //--------------------------------------------------------------------------------------
+    public AbstractClientMessageProcessor getmMessageProcessor() {
+		return mMessageProcessor;
+	}
+
+	//--------------------------------------------------------------------------------------
     public void clearUnreachableMessages(){
         Message msg = pollWriteMessage();
         while (null != msg) {
